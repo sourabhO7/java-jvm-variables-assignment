@@ -1,0 +1,77 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++
+1. What is the difference between JVM,JRE and JDK?
+++++++++++++++++++++++++++++++++++++++++++++++++++
+JDK is the development kit which contains JRE, JVM. It also contains the compiler, libraries, tools which are essential to create and run the program. 
+JRE is the runtime environment which is important to run the program. Within JRE there is a JVM which is responsible to read the code line by line and produce the MLL which is then delivered to the processor to get the output. 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2. How is Java programming language is machine and platform independent?
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Before java there was the era of C++ language which was also object oriented but after compilation it use to produce the .exe file which use to have the OS representation and can only be used by that particular OS representation. 
+For example: If we have Windows as a OS then .exe file produced by the compiler will only run in the Windows OS not in Linux, CentOS, Mac, etc. 
+
+But with Java this issue got resolved by having a intermediatary code which is termed as Bytecode. This Bytecode is having no OS representation which mean it can be executed by the JVM on any platform. Now, the catch is to execute this bytecode the JVM must be platform specific. JVM will read the bytecode and will produce the MLL in the local machine OS representation. 
+
+This is the reason the JAVA is also known as WORA and thus Java is platform independent programming language. 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+3. Explain how java program are executed by the JVM?
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+There are several steps that are coming into picture when we start executing the program. 
+Step 1 - When we run the program JRE gets created by the JVM in the RAM. 
+ As a part of this environment, three segments are created Method area, stack, heap area by JVM
+Step 2 - The class with the main method will get loaded into the method area first. 
+Step 3 - The main method then get loaded into the stack area and on top of that if any methods are there then they will get loaded dynamically. 
+Step 4 - If there is a request to create the object using new operator then an object will get created in the heap area and the reference for the same will be shared to the stack area statement. 
+Step 5 - If any non static attrubutes was there then they will get loaded too along with the object and then JVM will alot the default values to those attrubutes. 
+Step 6 - Once the execution is done then the methods one by one will get unloaded from the stack and when the main method get unloaded the reference get destroyed due to which the object looses the reference. 
+Step 7 - A program called Garbage collection will now come into the picture and will destroy the object without the reference and thus manage the heap memory and prevent the memory overflow. 
+Step 8 - And thus the class file will also get unloaded from the method area
+Step 9 - JRE also get unloaded from the RAM 
+
+Thus, in this way finally the RAM again becomes empty and program gets shutdown and the output is captured in the console. 
+
++++++++++++++++++++++++++++++++
+4. What is the use of var args?
++++++++++++++++++++++++++++++++
+var agrgs (variable arguments) was introduced in Java 5. It basically is useful when you are not sure about how many arguments will be given as a parameter to the method. It is beneficial in this case but the argument should be of same data type. 
+
+For example:
+public class Test{
+      public static void fun1(int... num){
+        statements ..............
+      }
+
+      public static void main(String[] args){
+        Test.fun1(1,2,3,4,5);
+        Test.fun2(1,2,3);
+      }
+} 
+
++++++++++++++++++++++++++++++++++++++++++++
+5. What are the types of variables in java?
++++++++++++++++++++++++++++++++++++++++++++
+There are four types of variable in java. They are:
+ 1. Local variable - These variables are created withing the  methods and are having scope within that method only. If you try to access them Compile will throw the compile time error. Initilization is mandatory for this variable. 
+ 2. Non static variable - These are declared within the class and outside the method. They belong to the object and to access them object creation is mandatory. 
+ 3. Static variable - These are declared within the class and outside the method with static keyword or access modifier in it. These basically belong to the common memory of the class and have the global access. Object creation is not mandatory at access them. 
+ 4. Reference variable:
+    There are two types:
+    1. Local reference variable - These belong to the method and have access withing that method only. 
+    2. Global reference variable - These are declared within the class outside the method with static keyword in it. They have the global access unlike the counter part. 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+6. How many types of memory areas are allocated by JVM?
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+There the three types of memory areas are allocated by JVM. They are:
+ 1. Method area:
+    It is a place where the .class file are loaded for the further process by the JVM. This is know as class loading. 
+ 2. Stack area:
+    It is a place where the methods are loaded by the JVM. 
+ 3. Head area:
+    It is a place where Objects are created and they are managed. 
+
++++++++++++++++++++++++++++++++++++++++
+7. What is Just-in-time (JIT) compiler?
++++++++++++++++++++++++++++++++++++++++
+We can say that JIT compiler is the best friend of the JVM. It basically improve the performance of the JVM. It optimizes the performance of the execution of the program. JIT detect the repeated usable code during the execution and then creates the MLL for the same and store it to the memory. Next time when the request will come for the repeated code these stored MLL will get executed and thus this way the performance is getting optimized. 
